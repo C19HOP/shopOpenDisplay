@@ -19,12 +19,12 @@ def index():
 #function to render result
 @app.route('/result', methods=['GET', 'POST'])
 def result():
-  thisShopOpenClosed = isTheCurrentlyShopOpen(shopOpenTime, shopCloseTime, currentTime)
+  thisShopOpenClosed = isTheShopCurrentlyOpen(shopOpenTime, shopCloseTime, currentTime)
   return render_template('result.html', resultOpenClosedState=thisShopOpenClosed, resultDTnow=currentTime)
 
 
 #Function to check if the shop is open
-def isTheCurrentlyShopOpen(thisShopOpenTime, thisShopCloseTime, thisCurrentTime):
+def isTheShopCurrentlyOpen(thisShopOpenTime, thisShopCloseTime, thisCurrentTime):
   if (thisCurrentTime > thisShopOpenTime) and (thisCurrentTime < thisShopCloseTime):
     return 'open'
   else:
